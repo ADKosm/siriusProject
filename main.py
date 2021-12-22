@@ -102,6 +102,10 @@ def index():
 
     return result
 
+@app.route("/hyu")
+def test():
+    return "kek"
+
 def merge_dicts(*dict_args):
     result = {}
     for dictionary in dict_args:
@@ -116,5 +120,6 @@ def fill_memes_db():
         memes.insert_one(x)
 
 if __name__ == '__main__':
-
+    if not memes.find_one({"_id": 1}):
+        fill_memes_db()
     app.run(host="0.0.0.0", port=8080)
