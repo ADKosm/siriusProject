@@ -1,0 +1,76 @@
+html{
+	text-align: center;
+	background-color: #8a488a;
+}
+
+#main-header{
+    color: white;
+    font-family: "Comic Sans MS", "Comic Sans";
+	padding-top: 6vh;
+}
+
+.red{
+	color: red;
+}
+
+.gray{
+	color: gray;
+}
+
+#cam-holder{
+	display: none;
+}
+
+#meme-holder{
+	height: 70vh;
+	width: 30vw;
+	margin: auto;
+	padding: 10px 10px 10px 10px;
+}
+
+#meme{
+	height: 95%;
+	width: 100%;
+	border: 4px ridge #FAFAFA;
+	background-color: white;
+	border-radius: 5px;
+	object-fit: contain;
+}
+
+#meme-line{
+	text-align: center;
+	color: white;
+	font: bold;
+	font-size: 14pt;
+	height: 5%;
+	font-family: "Comic Sans MS", "Comic Sans";
+	border: 3px solid gray;
+	border-radius: 10px;
+}
+
+#meme-line-progress{
+    position: relative;
+    z-index: -1;
+    background-color: #4e14cc;
+    top: -26px;
+    left: 0px;
+    height: 100%;
+}
+
+#buttons-holder{
+    padding: 15px;
+}
+
+#like-button{
+    font-size: 20pt;
+}
+
+
+/*memline fill color will be */
+
+#video-canv{
+	position: relative;
+	z-index: 100;
+	top: 0;
+	left: -640px;
+}

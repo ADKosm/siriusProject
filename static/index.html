@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Pif Paf Memes
+	</title>
+	<link rel="icon" type="image/x-icon" href="static/favicon.ico">
+	<link rel="stylesheet" href="static/main.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="static/faceapi/faceapi.js"></script>
+	<script type="text/javascript" src="static/main.js"></script>
+</head>
+<body>
+	<h1 id="main-header">Pif Paf Memes</h1>
+	<div id="cam-holder">
+		<video id="videoElement" autoplay muted playsinline></video>
+		<canvas id="video-canv"></canvas>
+	</div>
+	<div id="meme-holder" align="center">
+		<img id="meme">
+		<div id="meme-line">
+			Hold spacebar to stop
+			<div id="meme-line-progress"></div>
+		</div>
+	</div>
+	<div id="buttons-holder">
+		<button type="button" id="left-button"><-</button>
+		<button type="button" id="like-button" class="gray">&#10084;</button>
+		<button type="button" id="right-button">-></button>
+	</div>
+</body>
+</html>
