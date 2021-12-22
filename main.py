@@ -1,6 +1,8 @@
 import datetime
+import os
 import uuid
-import scipy
+from scipy.stats import beta
+import json
 
 from flask import Flask, send_from_directory, jsonify, make_response, request
 from pymongo import MongoClient
@@ -9,10 +11,10 @@ from pymongo.collection import Collection
 app = Flask(__name__, static_url_path="")
 
 total_memes = 7573
-memes_pack_size = 5
+memes_pack_size = 10
 total_clusters = 100
 
-mongodb_client = MongoClient('localhost', 27017)
+mongodb_client = MongoClient(os.environ.get("DB", 'localhost'), 27017)
 users: Collection = mongodb_client.application.numbers
 likes: Collection = mongodb_client.application.likes
 memes: Collection = mongodb_client.application.memes
@@ -53,8 +55,7 @@ def roll_cluster(probs):
     for i in range(total_clusters):
         a = probs[str(i)]["wins"]
         b = probs[str(i)]["loses"]
-        distr = scipy.stats.beta(a + 1, b + 1)
-        curr_prob = distr()
+        curr_prob = float(beta.rvs(a + 1, b + 1, 1))
         if(curr_prob > max_prob):
             max_prob = curr_prob
             max_prob_cluster = i
@@ -101,5 +102,19 @@ def index():
 
     return result
 
+def merge_dicts(*dict_args):
+    result = {}
+    for dictionary in dict_args:
+        result.update(dictionary)
+    return result
+
+def fill_memes_db():
+    with open("recsys.json", "r") as f:
+        data = json.load(f)
+    refined_data = [merge_dicts(x[0], x[1], x[2], x[3]) for x in data]
+    for x in refined_data:
+        memes.insert_one(x)
+
 if __name__ == '__main__':
+
     app.run(host="0.0.0.0", port=8080)

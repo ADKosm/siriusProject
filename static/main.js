@@ -4,11 +4,11 @@ var currSteps = 0
 var spacePressed = 0
 var exps = []
 var tr = 0.85
-var queueSize = 50
-var queueTrunc = 10
+var queueSize = 60
+var queueTrunc = 15
 var queuePos = 0
 var queue = []
-var memesPackSize = 5
+var memesPackSize = 10
 
 async function connectWebcam(){
 	let stream = await navigator.mediaDevices.getUserMedia({ video: {}});
