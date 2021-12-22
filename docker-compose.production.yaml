@@ -13,3 +13,5 @@ services:
     image: mongo:4
     ports:
       - 27017:27017
+    volumes:
+      - /home/yc-user:/data/db
