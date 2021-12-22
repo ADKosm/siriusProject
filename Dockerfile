@@ -5,5 +5,6 @@ RUN pip install -r requirements.txt
 
 COPY static ./static
 COPY main.py .
+COPY recsys.json .
 
 ENTRYPOINT ["python3", "main.py"]
