@@ -14,4 +14,4 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - /home/yc-user:/data/db
+      - /home/yc-user/data:/data/db
