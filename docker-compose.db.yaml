@@ -3,6 +3,4 @@ version: "3"
 services:
   database:
     image: mongo:4
-    ports:
-      - 27017:27017
     network_mode: "host"
