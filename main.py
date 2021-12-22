@@ -3,6 +3,7 @@ import os
 import uuid
 from scipy.stats import beta
 import json
+from random import shuffle
 
 from flask import Flask, send_from_directory, jsonify, make_response, request
 from pymongo import MongoClient
@@ -86,6 +87,7 @@ def meme_handler():
         if len(ret) >= memes_pack_size:
             break
         ret.extend(get_meme_recs(element))
+    shuffle(ret)
     ret = ret[:5]
     result = [{"meme_id": x["_id"], "liked": 0} for x in ret]
 
@@ -101,10 +103,6 @@ def index():
         result.set_cookie("user_id", user_id, expires=datetime.datetime.now() + datetime.timedelta(days=365))
 
     return result
-
-@app.route("/hyu")
-def test():
-    return "kek"
 
 def merge_dicts(*dict_args):
     result = {}
